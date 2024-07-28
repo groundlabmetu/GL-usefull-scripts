@@ -30,7 +30,6 @@ with open('Masa kullanımı ile ilgili request (Yanıtlar) - Form Yanıtları 1.
     reader = csv.reader(file)
     next(reader)  # Ignore the first row
     for counter, row in enumerate(reader):
-        print(row)
         zaman_damgasi = row[0]
         ad_soyad = row[1]
         ogrenci_no = row[2]
@@ -38,8 +37,8 @@ with open('Masa kullanımı ile ilgili request (Yanıtlar) - Form Yanıtları 1.
         comments = row[4]
 
         is_zero_hash = (hash == "$argon2id$v=19$m=2097152__t=2__p=4$2p4gW1kQc3+daOMV7G50NA$SBS9Uwsa+TJOskYOkx1lYrGbePpIEy/XVlz3ZfDvDGY")
-        card_requests.append(CardRequests(zaman_damgasi, ad_soyad, hash, comments, is_zero_hash))
-        if PARAM_PRINT_ROWS: card_requests[-1].print_object()
+        card_requests.append(CardRequests(zaman_damgasi, ad_soyad, ogrenci_no, hash, comments, is_zero_hash))
+        if PARAM_PRINT_ROWS: card_requests[-1].print_object(counter+1)
 # INTEGRITY CHECKS ========================================
 
 # Check if there is any duplicate student number in the GL_members

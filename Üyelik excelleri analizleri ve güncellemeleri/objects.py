@@ -22,8 +22,9 @@ class CardRequests():
         self.comments = comments
         self.is_zero_hash = is_zero_hash
 
-    def print_object(self):
+    def print_object(self, counter:int):
         print()
+        print(f"{counter}:")
         print(f"zaman_damgasi: {self.zaman_damgasi}")
         print(f"ad_soyad: {self.ad_soyad}")
         print(f"ogrenci_no: {self.ogrenci_no}")
