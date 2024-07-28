@@ -50,18 +50,17 @@ for member in GL_members:
     else:
         student_numbers.append(member.ogrenci_no)
 
-# Check if there is any duplicate hash in the card_requests, ignore the zero hash
-# hashes = []
-# for card in card_requests:
-#     if card.is_zero_hash: continue
+#Check if there is any duplicate hash in the card_requests, ignore the zero hash
+hashes = []
 
+duplicate_hashes = []
+for card in card_requests:
+    if card.is_zero_hash: continue
     
-#     if card.hash in hashes:
-#         print(f"Duplicate hash: {card.ad_soyad} - ({card.ogrenci_no}) -> {card.hash}")
-#         continue
-#         raise Exception("Duplicate hash")
-#     else:
-#         hashes.append(card.hash)
+    if card.hash in hashes:
+        print(f"Duplicate hash: {card.ad_soyad} - ({card.ogrenci_no}) -> {card.hash}")
+        continue
+        raise Exception("Duplicate hash")
+    else:
+        hashes.append(card.hash)
 
-
-# print(hashes)
