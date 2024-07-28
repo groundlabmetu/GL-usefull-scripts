@@ -1,3 +1,4 @@
+import string
 
 class GLMember:
     def __init__(self, row_no:str = None, ogrenci_adi:str = None, girebilite:bool = None, ogrenci_no:str=None,bolum:str =None, giris_yili:str=None, tanitim:str=None, elektronik:str=None, atolye:str=None, printer:str=None, note:str=None):
@@ -61,9 +62,9 @@ class CardRequests():
     def __init__(self, zaman_damgasi:str=None, ad_soyad:str =None, ogrenci_no:str = None, hash:str=None, comments:str = None, is_zero_hash:bool = None):
         self.zaman_damgasi = zaman_damgasi
         self.ad_soyad = ad_soyad
-        self.ogrenci_no = ogrenci_no
-        self.hash = hash
+        self.ogrenci_no = ogrenci_no       
         self.comments = comments
+        self.hash = hash
         self.is_zero_hash = is_zero_hash
 
     def print_object(self, counter:int):
@@ -97,3 +98,21 @@ class Students():
         print(f"electronics_2: {self.electronics_2}")
         print(f"printer: {self.printer}")
         print()
+
+    def translate_name_to_english(self):
+        turkish_to_english = str.maketrans(
+        "çÇğĞıİöÖşŞüÜ",
+        "cCgGiIoOsSuU"
+        )
+        translated_text = self.ad_soyad.translate(turkish_to_english)
+        english_chars = string.ascii_letters + string.whitespace
+        filtered_text = ''.join([char for char in translated_text if char in english_chars])
+        self.ad_soyad = filtered_text.upper()
+
+    def update_durations(self, mechanic_duration:str, electronics_1_duration:str, electronics_2_duration:str, printer_duration:str):
+        self.mechanics = mechanic_duration if self.mechanics != "0" else "0"
+        self.electronics_1 = electronics_1_duration if self.electronics_1 != "0" else "0"
+        self.electronics_2 = electronics_2_duration if self.electronics_2 != "0" else "0"
+        self.printer = printer_duration if self.printer != "0" else "0"
+
+     
