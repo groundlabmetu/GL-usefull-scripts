@@ -12,11 +12,26 @@ class GLMember:
         self.printer = printer
         self.note = note
 
-        
+        self.activehash = None
+    
         self.student_hashes = []
 
     def append_hash(self, hash:str):
         self.student_hashes.append(hash)
+
+    def set_active_hash(self):
+        reversed_hash_list = self.student_hashes[::-1]
+        for hash in reversed_hash_list:
+            if not hash.is_zero_hash:
+                self.activehash = hash
+                break
+        
+            
+                
+
+
+
+
 
     
 class CardRequests():

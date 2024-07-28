@@ -51,14 +51,20 @@ with open('Masa kullanımı ile ilgili request (Yanıtlar) - Form Yanıtları 1.
         card_requests.append(CardRequests(zaman_damgasi, ad_soyad, ogrenci_no, hash, comments, is_zero_hash))
         if PARAM_PRINT_ROWS: card_requests[-1].print_object(counter+1)
 
-# INTEGRITY CHECKS ========================================
+# MATCH CARDS WITH PERSON ========================================
 
 for member in GL_members:
     for card in card_requests:
         if member.ogrenci_no == card.ogrenci_no:
-            member.append_hash(card.hash)
+            member.append_hash(card)
+
+#WHICH ONE IS ACTIVE HASH
 
 for member in GL_members:
-    print(f"{member.ogrenci_adi:<{30}} - ({member.ogrenci_no:<{7}}) -> hash sayısı: {len(member.student_hashes):<{5}}")
+    member.set_active_hash()
 
+for member in GL_members:
+    is_hash_assigned = member.activehash is not None
+    print(f"{member.ogrenci_adi:<{30}} - ({member.ogrenci_no:<{7}}) -> Hash atandı: {is_hash_assigned:<{7}} | Hash sayısı: {len(member.student_hashes):<{5}}")
 
+    
