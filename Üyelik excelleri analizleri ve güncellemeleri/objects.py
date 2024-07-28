@@ -11,4 +11,28 @@ class GLMember:
         self.atolye = atolye
         self.printer = printer
         self.note = note
+
+    
+class CardRequests():
+    def __init__(self, zaman_damgasi:str=None, ad_soyad:str =None, ogrenci_no:str = None, hash:str=None, comments:str = None, is_zero_hash:bool = None):
+        self.zaman_damgasi = zaman_damgasi
+        self.ad_soyad = ad_soyad
+        self.ogrenci_no = ogrenci_no
+        self.hash = hash
+        self.comments = comments
+        self.is_zero_hash = is_zero_hash
+
+    def print_object(self):
+        print()
+        print(f"zaman_damgasi: {self.zaman_damgasi}")
+        print(f"ad_soyad: {self.ad_soyad}")
+        print(f"ogrenci_no: {self.ogrenci_no}")
+        print(f"hash: {self.hash}")
+        print(f"comments: {self.comments}")
+        print(f"is_zero_hash: {self.is_zero_hash}")
+        print()
+
+
+
+
         
