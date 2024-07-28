@@ -99,19 +99,19 @@ for GL_member in GL_members:
             student.hash = GL_member.activehash.hash
 
             if student.mechanics != GL_member.return_mechanic_time():
-                print(f"Mechanic time is updated for {student.ad_soyad} from {student.mechanics} to {GL_member.return_mechanic_time()}")
+                print(f"{'      (Updated Student):':<{50}}Mechanic time is updated for {student.ad_soyad} from {student.mechanics} to {GL_member.return_mechanic_time()}")
                 student.mechanics = GL_member.return_mechanic_time()
 
             if student.electronics_1 != GL_member.return_electronics_1_time():
-                print(f"Electronics 1 time is updated for {student.ad_soyad} from {student.electronics_1} to {GL_member.return_electronics_1_time()}")
+                print(f"{'      (Updated Student):':<{50}}Electronics 1 time is updated for {student.ad_soyad} from {student.electronics_1} to {GL_member.return_electronics_1_time()}")
                 student.electronics_1 = GL_member.return_electronics_1_time()
 
             if student.electronics_2 != GL_member.return_electronics_2_time():
-                print(f"Electronics 2 time is updated for {student.ad_soyad} from {student.electronics_2} to {GL_member.return_electronics_2_time()}")
+                print(f"{'      (Updated Student):':<{50}}Electronics 2 time is updated for {student.ad_soyad} from {student.electronics_2} to {GL_member.return_electronics_2_time()}")
                 student.electronics_2 = GL_member.return_electronics_2_time()
             
             if student.printer != GL_member.return_printer_time():
-                print(f"Printer time is updated for {student.ad_soyad} from {student.printer} to {GL_member.return_printer_time()}")
+                print(f"{'      (Updated Student):':<{50}}Printer time is updated for {student.ad_soyad} from {student.printer} to {GL_member.return_printer_time()}")
                 student.printer = GL_member.return_printer_time()
 
             break
@@ -120,5 +120,5 @@ for GL_member in GL_members:
         new_student = Students(GL_member.ogrenci_adi, GL_member.ogrenci_no, GL_member.activehash.hash, GL_member.return_mechanic_time(), GL_member.return_electronics_1_time(), GL_member.return_electronics_2_time(), GL_member.return_printer_time())
         students.append(new_student)
 
-        print(f"New student is added to the 'Students' list: {new_student.ad_soyad} - ({new_student.ogrenci_no}, ($hash)), {new_student.mechanics}, {new_student.electronics_1}, {new_student.electronics_2}, {new_student.printer}")
+        print(f"{'(New Students):':<{50}}{new_student.ad_soyad:<{30}} - ({new_student.ogrenci_no:<{15}}), ($hash), {new_student.mechanics:<{4}}, {new_student.electronics_1:<{4}}, {new_student.electronics_2:<{4}}, {new_student.printer:<{4}}")
                 
