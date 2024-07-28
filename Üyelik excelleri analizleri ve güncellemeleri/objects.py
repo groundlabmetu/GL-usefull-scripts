@@ -12,6 +12,11 @@ class GLMember:
         self.printer = printer
         self.note = note
 
+        self.student_hashes = []
+
+    def append_hash(self, hash:str):
+        self.student_hashes.append(hash)
+
     
 class CardRequests():
     def __init__(self, zaman_damgasi:str=None, ad_soyad:str =None, ogrenci_no:str = None, hash:str=None, comments:str = None, is_zero_hash:bool = None):
