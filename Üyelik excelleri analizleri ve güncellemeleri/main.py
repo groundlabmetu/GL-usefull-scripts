@@ -9,9 +9,9 @@ PARAM_PRINT_CARD_REQUESTS_IMPORT = False
 PARAM_PRINT_STUDENT_IMPORT = False
 PARAM_PRINT_STUDENT_CRUD = False
 PARAM_PRINT_HASH_ASSIGNMENTS = False
-PARAM_PRINT_COPY_TO_CLIPBOARD = True
+PARAM_PRINT_COPY_TO_CLIPBOARD = False
 
-PARAM_COPY_TO_CLIPBOARD = True
+PARAM_COPY_TO_CLIPBOARD = False
 
 PARAM_MECHANIC_DURATION = "120"
 PARAM_ELECTRONICS_1_DURATION = "120"
@@ -179,3 +179,21 @@ for counter, student in enumerate(students):
 if PARAM_COPY_TO_CLIPBOARD:
     print("Copying to clipboard...")
     pyperclip.copy(string_to_copy)
+
+string_to_copy = ""
+for counter, GL_member in enumerate(GL_members):
+    matched_student = None
+    for student in students:
+        if GL_member.ogrenci_no == student.ogrenci_no:
+            if student.hash != "$argon2id$v=19$m=2097152__t=2__p=4$2p4gW1kQc3+daOMV7G50NA$SBS9Uwsa+TJOskYOkx1lYrGbePpIEy/XVlz3ZfDvDGY":
+                matched_student = student
+                break                
+    
+    string_to_copy += GL_member.return_info_excell_row(counter = counter+1, student = matched_student)
+
+           
+
+
+
+print("Copying to clipboard...")
+pyperclip.copy(string_to_copy)
