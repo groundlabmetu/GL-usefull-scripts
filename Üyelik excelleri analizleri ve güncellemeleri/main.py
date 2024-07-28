@@ -5,7 +5,6 @@ from objects import CardRequests
 
 PARAM_PRINT_ROWS = True
 
-
 # fetch GL_members from a csv file ========================================
 GL_members = []
 with open('Ground Lab Üyeler - Aktif üyeler.csv', 'r', encoding='utf-8') as file:
@@ -62,20 +61,4 @@ for member in GL_members:
 for member in GL_members:
     print(f"{member.ogrenci_adi:<{30}} - ({member.ogrenci_no:<{7}}) -> hash sayısı: {len(member.student_hashes):<{5}}")
 
-
-
-
-# #Check if there is any duplicate hash in the card_requests, ignore the zero hash
-# hashes = []
-
-# duplicate_hashes = []
-# for card in card_requests:
-#     if card.is_zero_hash: continue
-    
-#     if card.hash in hashes:
-#         print(f"Duplicate hash: {card.ad_soyad} - ({card.ogrenci_no}) -> {card.hash}")
-#         continue
-#         raise Exception("Duplicate hash")
-#     else:
-#         hashes.append(card.hash)
 

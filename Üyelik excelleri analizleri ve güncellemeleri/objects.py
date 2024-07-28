@@ -12,6 +12,7 @@ class GLMember:
         self.printer = printer
         self.note = note
 
+        
         self.student_hashes = []
 
     def append_hash(self, hash:str):
