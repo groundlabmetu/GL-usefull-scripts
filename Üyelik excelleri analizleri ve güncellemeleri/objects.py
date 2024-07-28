@@ -25,15 +25,7 @@ class GLMember:
             if not hash.is_zero_hash:
                 self.activehash = hash
                 break
-        
-            
-                
-
-
-
-
-
-    
+          
 class CardRequests():
     def __init__(self, zaman_damgasi:str=None, ad_soyad:str =None, ogrenci_no:str = None, hash:str=None, comments:str = None, is_zero_hash:bool = None):
         self.zaman_damgasi = zaman_damgasi
@@ -53,8 +45,6 @@ class CardRequests():
         print(f"comments: {self.comments}")
         print(f"is_zero_hash: {self.is_zero_hash}")
         print()
-
-
 
 
         

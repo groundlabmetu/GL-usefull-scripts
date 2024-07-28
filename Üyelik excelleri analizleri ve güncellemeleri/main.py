@@ -59,12 +59,13 @@ for member in GL_members:
             member.append_hash(card)
 
 #WHICH ONE IS ACTIVE HASH
-
 for member in GL_members:
     member.set_active_hash()
 
-for member in GL_members:
+# PRINT THE RESULT ========================================
+for counter, member in enumerate(GL_members):
     is_hash_assigned = member.activehash is not None
-    print(f"{member.ogrenci_adi:<{30}} - ({member.ogrenci_no:<{7}}) -> Hash atandı: {is_hash_assigned:<{7}} | Hash sayısı: {len(member.student_hashes):<{5}}")
+    print(f"{counter}| {member.ogrenci_adi:<{30}} - ({member.ogrenci_no:<{15}}) -> Hash atandı: {is_hash_assigned:<{7}} | Hash sayısı: {len(member.student_hashes):<{5}}")
 
     
+
