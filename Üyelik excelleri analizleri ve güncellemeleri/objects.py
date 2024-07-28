@@ -47,4 +47,13 @@ class CardRequests():
         print()
 
 
-        
+class Sudents():
+    def __init__(self, ad_soyad:str=None, ogrenci_no:str =None, hash:str = None, mechanics:str=None, electronics_1:str = None, electronics_2:str = None, printer:str = None):
+        self.ad_soyad = ad_soyad
+        self.ogrenci_no = ogrenci_no
+        self.hash = hash
+        self.mechanics = mechanics
+        self.electronics_1 = electronics_1
+        self.electronics_2 = electronics_2
+        self.printer = printer
+      

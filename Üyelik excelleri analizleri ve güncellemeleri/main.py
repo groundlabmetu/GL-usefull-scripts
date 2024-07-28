@@ -69,3 +69,16 @@ for counter, member in enumerate(GL_members):
 
     
 
+Student = []
+with open('Students - Sayfa1.csv', 'r', encoding='utf-8') as file:
+    reader = csv.reader(file)
+    next(reader)  # Ignore the first row
+    for counter, row in enumerate(reader):
+        ad_soyad = row[0]
+        ogrenci_no = row[1]
+        hash = row[2]
+        mechanics = row[3]
+        electronics_1 = row[4]
+        electronics_2 = row[5]
+        printer = row[6]
+        Student.append(GLMember(ad_soyad, ogrenci_no, hash, mechanics, electronics_1, electronics_2, printer))
