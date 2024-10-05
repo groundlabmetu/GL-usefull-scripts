@@ -276,14 +276,14 @@ class InformationTable:
         for member in self.member_table_rows:
             student_no = member['ogrenci_no']
             information_table_row = {
-                'name': ' '.join([word[0] + '*' * (len(word) - 1) for word in member['ogrenci_adi'].split()]),
+                'name': ' '.join([word[:2] + '.' for word in member['ogrenci_adi'].split()]),
                 'is_banned_info': member['girebilite'],
                 'student_id': int(student_no),
                 'is_card_registered': "Kartı Tanımlı" if any(api_row['student_id'] == student_no for api_row in self.api_table_rows) else "Kartı Tanımlı Değil",
                 'tanitim': "Tanıtım Var" if member['tanitim'] != "" else "-",
                 'mechanics': "Atölye Var" if member['atolye'] != "" else "-",                
                 'electronic': "Elektronik Var" if member['elektronik'] != "" else "-",
-                'printer': "3D Yazıcı Var" if member['yazici'] != "" else "-"
+                'printer': "3B Yazıcı Var" if member['yazici'] != "" else "-"
             }
            
             self.information_table_rows.append(information_table_row)
@@ -302,6 +302,9 @@ class InformationTable:
             pyperclip.copy(information_table_str)
             print("[INFO] Information table is copied to clipboard.")
         
+    def get_information_table_rows(self):
+        return self.information_table_rows
+    
 if __name__ == "__main__":
     csv_folder_path = Path(__file__).parent.parent.resolve() / 'csv_files'
     member_table_path = csv_folder_path / 'Ground Lab Üyeler - Aktif üyeler.csv'

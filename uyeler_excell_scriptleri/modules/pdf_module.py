@@ -34,7 +34,7 @@ class Page:
         """
         return self.page_width, self.page_height
     
-    def add_text(self, x: float, y: float, text: str, font: str = 'Helvetica', size: int = 12):
+    def add_text(self, x: float, y: float, text: str, font: str = 'Helvetica', size: int = 12, text_color: tuple = (0, 0, 0)):
         """
         Add text to the page at the specified position.
 
@@ -44,8 +44,27 @@ class Page:
         :param font: Font name.
         :param size: Font size.
         """
+
+        #convert türkish characters to latin-1
+        char_map = {
+            "ç": "c",
+            "Ç": "C",
+            "ğ": "g",
+            "Ğ": "G",
+            "ı": "i",
+            "İ": "I",
+            "ö": "o",
+            "Ö": "O",
+            "ş": "s",
+            "Ş": "S",
+            "ü": "u",
+            "Ü": "U"
+        }
+        for key, value in char_map.items():
+            text = text.replace(key, value)
+
         self.canvas.setFont(font, size)
-        self.canvas.setFillColorRGB(1, 1, 1)  # White in RGB (1, 1, 1)
+        self.canvas.setFillColorRGB(text_color[0],text_color[1], text_color[2] )  # White in RGB (1, 1, 1)
         self.canvas.drawString(x, y, text)
 
     def add_image_from_cv2(self, image_cv2: np.ndarray, x: float, y: float, width: float = None, height: float = None):
@@ -77,13 +96,17 @@ class Page:
         :return: Merged PDF page.
         """
         # Finalize the canvas and get the overlay PDF
-        self.canvas.save()
-        self.packet.seek(0)
-        overlay_pdf = PyPDF2.PdfReader(self.packet)
-        overlay_page = overlay_pdf.pages[0]
-
-        # Merge the overlay page with the template page
-        self.template_page.merge_page(overlay_page)
+        try:
+            self.canvas.save()
+            self.packet.seek(0)
+            overlay_pdf = PyPDF2.PdfReader(self.packet)
+            overlay_page = overlay_pdf.pages[0]
+            # Merge the overlay page with the template page
+            self.template_page.merge_page(overlay_page)
+        except IndexError as e:
+            #if no edditon is made on the canvas, then the overlay_pdf will be empty and the merge will raise an error
+            pass
+        
         return self.template_page
 
 class PDF:

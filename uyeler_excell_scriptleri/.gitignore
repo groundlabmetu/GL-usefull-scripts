@@ -2,3 +2,5 @@ env/*
 *__pycache__
 csv_files/*
 !csv_files/.gitkeep
+pdf_files/*
+!pdf_files/.gitkeep
