@@ -282,8 +282,7 @@ class InformationTable:
                 'is_card_registered': "Kartı Tanımlı" if any(api_row['student_id'] == student_no for api_row in self.api_table_rows) else "Kartı Tanımlı Değil",
                 'tanitim': "Tanıtım Var" if member['tanitim'] != "" else "-",
                 'mechanics': "Atölye Var" if member['atolye'] != "" else "-",                
-                'electronic_1': "Elektronik-1 Var" if member['elektronik'] != "" else "-",
-                'electronic_2': "Elektronik-2 Var" if member['elektronik'] != "" else "-",
+                'electronic': "Elektronik Var" if member['elektronik'] != "" else "-",
                 'printer': "3D Yazıcı Var" if member['yazici'] != "" else "-"
             }
            
@@ -296,7 +295,7 @@ class InformationTable:
         information_table_str = ""
         for row in self.information_table_rows:
             #student no, name, is_banned_info, is_card_registered, tanitim, electronic_1, electronic_2, printer, mechanics
-            information_table_str += f"{row['student_id']}\t{row['name']}\t{row['is_banned_info']}\t{row['is_card_registered']}\t{row['tanitim']}\t{row['electronic_1']}\t{row['electronic_2']}\t{row['printer']}\t{row['mechanics']}\n"
+            information_table_str += f"{row['student_id']}\t{row['name']}\t{row['is_banned_info']}\t{row['is_card_registered']}\t{row['tanitim']}\t{row['electronic']}\t{row['printer']}\t{row['mechanics']}\n"
 
         answer = input("Do you want to copy the Information table to clipboard? (y/n): ")
         if answer.lower() == "y":
