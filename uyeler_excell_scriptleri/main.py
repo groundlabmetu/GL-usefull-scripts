@@ -34,19 +34,54 @@ information_table_manager.copy_information_table_to_clipboard() # Copy the Infor
 # Create Sumamry PDF ========================================================================================================
 locale.setlocale(locale.LC_TIME, 'tr_TR.UTF-8') # Date format in Turkish
 
-output_pdf_name = f"groundlab_genel_rapor_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.pdf"
-#output_pdf_name = f"groundlab_genel_rapor.pdf"
+add_timestamp_to_output_pdf = True
+output_pdf_name = f"groundlab_genel_rapor_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.pdf" if add_timestamp_to_output_pdf else f"groundlab_genel_rapor.pdf"
 templates_folder_path = Path(__file__).parent.resolve() / 'src' / 'templates'
 pdf_output_folder_path = Path(__file__).parent.resolve() / 'pdf_files' / output_pdf_name
 
 # Cover Page
-cover_page_path = templates_folder_path / 'cover_page.pdf'
-cover_page = pdf_module.Page(template_pdf_path= cover_page_path)
+cover_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'cover_page.pdf')
 today_date = datetime.datetime.now().strftime("%d %B %Y")
 cover_page.add_text(x = 88, y = 370, text = today_date, text_color=(0.54, 0.09, 0.19), size=16)
 
 main_pdf = pdf_module.PDF()
 main_pdf.add_page(cover_page)
+
+# GL info page
+gl_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'GL_info_page.pdf')
+main_pdf.add_page(gl_info_page)
+
+# Yonetim info page
+yonetim_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'yonetim_info_page.pdf')
+main_pdf.add_page(yonetim_info_page)
+
+# nasıl_uye_olunur info page
+nasıl_uye_olunur_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'nasıl_uye_olurum_page.pdf')
+main_pdf.add_page(nasıl_uye_olunur_info_page)
+
+# Kullanım Kuralları info page
+kullanim_kurallari_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'gl_kuralları_page.pdf')
+main_pdf.add_page(kullanim_kurallari_info_page)
+
+# Kart sistemi nasıl çalışır info page
+kart_sistemi_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'kart_sistemi_nasıl_calisir_page.pdf')
+main_pdf.add_page(kart_sistemi_info_page)
+
+# Elektrik ekipmanları info page
+elektrik_ekipmanlari_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'elektronik_ekipman_listesi_page.pdf')
+main_pdf.add_page(elektrik_ekipmanlari_info_page)
+
+# El aletleri info page
+el_aletleri_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'el_aletleri_page.pdf')
+main_pdf.add_page(el_aletleri_info_page)
+
+# Sarf Malzemeler info page
+sarf_malzemeler_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'sarf_malzemesi_page.pdf')
+main_pdf.add_page(sarf_malzemeler_info_page)
+
+# Kendi atölyeni yap info page
+kendi_atolyeni_yap_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'kendi_atolyeniz_page.pdf')
+main_pdf.add_page(kendi_atolyeni_yap_info_page)
 
 # Authorizations Information Table Pages
 member_authorizations_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'member_authorizations_info_page.pdf')
