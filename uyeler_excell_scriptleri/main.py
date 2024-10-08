@@ -55,13 +55,31 @@ main_pdf.add_page(gl_info_page)
 yonetim_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'yonetim_info_page.pdf')
 main_pdf.add_page(yonetim_info_page)
 
+#Lab krokisi info page
+lab_krokisi_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'lab_kroki_page.pdf')
+main_pdf.add_page(lab_krokisi_info_page)
+
 # nasıl_uye_olunur info page
-nasıl_uye_olunur_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'nasıl_uye_olurum_page.pdf')
+nasıl_uye_olunur_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'nasıl_uye_olurum_page_1.pdf')
 main_pdf.add_page(nasıl_uye_olunur_info_page)
+
+nasıl_uye_olunur_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'nasıl_uye_olurum_page_2.pdf')
+main_pdf.add_page(nasıl_uye_olunur_info_page)
+
+nasıl_uye_olunur_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'nasıl_uye_olurum_page_3.pdf')
+main_pdf.add_page(nasıl_uye_olunur_info_page)
+
+nasıl_uye_olunur_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'nasıl_uye_olurum_page_4.pdf')
+main_pdf.add_page(nasıl_uye_olunur_info_page)
+
 
 # Kullanım Kuralları info page
 kullanim_kurallari_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'gl_kuralları_page.pdf')
 main_pdf.add_page(kullanim_kurallari_info_page)
+
+# Eğitim videoları page
+egitim_videolari_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'egitim_videolari_page.pdf')
+main_pdf.add_page(egitim_videolari_info_page)
 
 # Kart sistemi nasıl çalışır info page
 kart_sistemi_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'kart_sistemi_nasıl_calisir_page.pdf')
@@ -82,6 +100,10 @@ main_pdf.add_page(sarf_malzemeler_info_page)
 # Kendi atölyeni yap info page
 kendi_atolyeni_yap_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'kendi_atolyeniz_page.pdf')
 main_pdf.add_page(kendi_atolyeni_yap_info_page)
+
+# kart sistemi detayli info page
+kart_sistemi_detayli_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'kart_sistemi_nasıl_calisir_page.pdf')
+main_pdf.add_page(kart_sistemi_detayli_info_page)
 
 # Authorizations Information Table Pages
 member_authorizations_info_page = pdf_module.Page(template_pdf_path= templates_folder_path / 'member_authorizations_info_page.pdf')
@@ -109,7 +131,11 @@ for i in range(0, len(information_table_rows), member_per_page):
         new_page.add_text(x = 510, y = 696-row_no*14.95, text = bath_row['mechanics'], size=8)
     main_pdf.add_page(new_page)
 
-
-
 main_pdf.save(output_pdf_path = pdf_output_folder_path)
 
+
+def sum_list_function(list):
+    sum = 0
+    for i in list:
+        sum += i
+    return sum
