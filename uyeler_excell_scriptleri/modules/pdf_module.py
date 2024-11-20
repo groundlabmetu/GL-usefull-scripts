@@ -60,6 +60,7 @@ class Page:
             "ü": "u",
             "Ü": "U"
         }
+
         for key, value in char_map.items():
             text = text.replace(key, value)
 
